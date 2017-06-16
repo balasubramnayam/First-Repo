@@ -1,0 +1,12 @@
+logging:
+    config: classpath:log4j2-backup.xml
+  
+server:
+  port: 9999
+  contextPath: /UserRegistration
+db:
+  host: localhost
+  port: 27017
+  name: usersDataBase
+  user: 
+  password: 
