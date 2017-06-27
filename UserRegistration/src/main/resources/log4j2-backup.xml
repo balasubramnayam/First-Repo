@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="60">
+	<Properties>
+		<Property name="log-path">C:/Mylogs</Property>
+		<Property name="archive">${log-path}/archive</Property>
+	</Properties>
+
+	<Appenders>
+
+		<RollingFile name="RollingFile-Appender" fileName="${log-path}/UserRegistration.log" filePattern="${archive}/log4j2.%d{yyyy-MM-dd-hh-mm}.log.gz">
+			<PatternLayout pattern="[%level]\t%d{ISO8601}{GMT+0} [%t] %c{1} - %msg%n" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="1MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="30" />
+		</RollingFile>
+
+		<Console name="Console-Appender" target="SYSTEM_OUT">
+			<PatternLayout>
+				<pattern>
+					[%level]\t%d{ISO8601}{GMT+0} [%t] %c{1} - %msg%n
+				</pattern>
+			</PatternLayout>
+		</Console>
+	</Appenders>
+	<Loggers>
+
+		<Logger name="com.employee.registration" level="info" additivity="false">
+			<AppenderRef ref="RollingFile-Appender" />
+		</Logger>
+		<Root>
+			<AppenderRef ref="RollingFile-Appender" />
+		</Root>
+	</Loggers>
+</Configuration>
